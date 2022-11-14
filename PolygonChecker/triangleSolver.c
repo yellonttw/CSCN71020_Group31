@@ -18,7 +18,6 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	{
 		result = "Isosceles triangle";
 	}
-
 	else 
 	{
 		result = "Scalene triangle";
