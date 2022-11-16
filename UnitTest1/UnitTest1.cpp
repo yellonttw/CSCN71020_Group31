@@ -19,22 +19,24 @@ namespace UnitTest1
 			Assert::AreEqual("Not a triangle", Result);
 		}
 		TEST_METHOD(Triangle_case2)
-		{
 			//If the three sides are equal, the output will be "equilateral triangle"
+		{
 			char Result[25];
 			strcpy_s(Result, analyzeTriangle(3, 3, 3));
 			Assert::AreEqual("Equilateral triangle", Result);
 		}
 		TEST_METHOD(Triangle_case3)
 			//Two sides are equal but not equal to the third side, the output will be "Isosceles triangle"
-		{
+			//This case failed
+		{	
 			char Result[25];
-			strcpy_s(Result, analyzeTriangle(3, 3, 2));
+			strcpy_s(Result, analyzeTriangle(2, 3, 3));
 			Assert::AreEqual("Isosceles triangle", Result);
 		}
 		TEST_METHOD(Triangle_case4)
-		{
 			//If all three sides are not equal and the sum of two sides is equal to the third side, "not a triangle" should be output, because the sum of two sides must greater than the third side
+			//This case failed
+		{
 			char Result[25];
 			strcpy_s(Result, analyzeTriangle(2, 3, 5));
 			Assert::AreEqual("Not a triangle", Result);
@@ -42,7 +44,7 @@ namespace UnitTest1
 		
 		TEST_METHOD(Triangle_case5)
 			//If all three sides are not equal and the sum of the two sides is greater than the third side, "Scalene triangle" will be output
-		{
+		{	
 			char Result[25];
 			strcpy_s(Result, analyzeTriangle(3, 4, 5));
 			Assert::AreEqual("Scalene triangle", Result);
