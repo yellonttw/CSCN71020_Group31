@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 #include "triangleSolver.h"
+//Need add one more judgment to determain two sides add together need to bigger than the third side in the triangleSolver.c file.
 
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
@@ -13,8 +14,8 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	{
 		result = "Equilateral triangle";
 	}
-	else if ((side1 == side2 && side1 != side3) || 
-		(side1 == side3 && side1 != side2))
+	//this function didn't judgment the side2 equal the side3
+	else if ((side1 == side2 && side1 != side3) || (side1 == side3 && side1 != side2))
 	{
 		result = "Isosceles triangle";
 	}
