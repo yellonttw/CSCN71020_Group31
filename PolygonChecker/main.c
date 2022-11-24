@@ -22,6 +22,14 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+			double res[3];
+			if (vaild_triangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]))
+			{
+				printf_s("Angles:\n");
+				calculate_inside_angles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2], res);
+				printf_s("%lf %lf %lf\n", res[0], res[1], res[2]);
+			}
+
 			break;
 		case 0:
 			continueProgram = false;
