@@ -15,7 +15,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 		result = "Equilateral triangle";
 	}
 	//this function didn't judgment the side2 equal the side3
-	else if ((side1 == side2 && side1 != side3) || (side1 == side3 && side1 != side2))
+	else if ((side1 == side2) || (side2 == side3) || (side3 == side1))
 	{
 		result = "Isosceles triangle";
 	}
