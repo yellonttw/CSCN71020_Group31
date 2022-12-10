@@ -130,6 +130,7 @@ double calculaterange(double a, double b)
 
 bool judgerectangle(double a, double b, double c, double d, double e, double f)
 {
+	int judge;
 	if (analyzerightangle(a, b, e) && analyzerightangle(a, b, f) && analyzerightangle(c, d, f) && analyzerightangle(b, c, e))
 	{
 		return true;
