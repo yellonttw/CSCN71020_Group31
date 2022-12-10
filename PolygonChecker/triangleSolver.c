@@ -50,16 +50,19 @@ bool vaild_triangle(int side1, int side2, int side3)
 
 void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8)
 {
-	char* result = "";
 	double lineA, lineB, lineC, lineD, lineE, lineF;
 	double range, circumference;
-	lineA = calculatelength(p1, p2, p3, p4);
-	lineB = calculatelength(p3, p4, p5, p6);
-	lineC = calculatelength(p5, p6, p7, p8);
-	lineD = calculatelength(p7, p8, p1, p2);
-	lineE = calculatelength(p1, p2, p5, p6);
-	lineF = calculatelength(p3, p4, p7, p8);
-	if (analyzerightangle(lineA,lineD,lineE) && analyzerightangle(lineA, lineB, lineF) && analyzerightangle(lineC, lineD, lineF) && analyzerightangle(lineB, lineC, lineE))
+	double line[6] = { 0.0,0.0,0.0,0.0,0.0,0.0};
+	calculatelength(p1, p2, p3, p4, p5, p6, p7, p8,line);
+	
+	lineA = line[0];
+	lineB = line[1];
+	lineC = line[2];
+	lineD = line[3];
+	lineE = line[4];
+	lineF = line[5];
+	
+	if (judgerectangle(lineA, lineB, lineC, lineD, lineE, lineF))
 	{
 		range = calculaterange(lineA, lineB);
 		circumference = calculatecircumference(lineA, lineB, lineC, lineD);
@@ -103,11 +106,14 @@ bool analyzerightangle(double line1, double line2, double line3)
 }
 
 
-double calculatelength(int x1, int y1, int x2, int y2)
+void calculatelength(int p1, int p2, int p3, int p4,int p5,int p6,int p7,int p8,double* r)
 {
-	double length;
-	length = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-	return length;
+	r[0] = sqrt((p3 - p1) * (p3 - p1) + (p4 - p2) * (p4 - p2));
+	r[1] = sqrt((p5 - p3) * (p5 - p3) + (p6 - p4) * (p6 - p4));
+	r[2] = sqrt((p7 - p5) * (p7 - p5) + (p8 - p6) * (p8 - p6));
+	r[3] = sqrt((p1 - p7) * (p1 - p7) + (p2 - p8) * (p2 - p8));
+	r[4] = sqrt((p5 - p1) * (p5 - p1) + (p6 - p2) * (p6 - p2));
+	r[5] = sqrt((p7 - p3) * (p7 - p3) + (p8 - p4) * (p8 - p4));
 }
 
 double calculatecircumference(double a, double b, double c, double d)
@@ -120,4 +126,17 @@ double calculaterange(double a, double b)
 {
 	double ran = a * b;
 	return ran;
+}
+
+bool judgerectangle(double a, double b, double c, double d, double e, double f)
+{
+	if (analyzerightangle(a, b, e) && analyzerightangle(a, b, f) && analyzerightangle(c, d, f) && analyzerightangle(b, c, e))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
