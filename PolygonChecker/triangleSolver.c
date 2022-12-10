@@ -54,11 +54,11 @@ void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, 
 	double lineA, lineB, lineC, lineD, lineE, lineF;
 	double range, circumference;
 	lineA = calculatelength(p1, p2, p3, p4);
-	lineB = calculatelength(p3, p4, p7, p8);
-	lineC = calculatelength(p7, p8, p5, p6);
-	lineD = calculatelength(p5, p6, p1, p2);
-	lineE = calculatelength(p5, p6, p3, p4);
-	lineF = calculatelength(p1, p2, p7, p8);
+	lineB = calculatelength(p3, p4, p5, p6);
+	lineC = calculatelength(p5, p6, p7, p8);
+	lineD = calculatelength(p7, p8, p1, p2);
+	lineE = calculatelength(p1, p2, p5, p6);
+	lineF = calculatelength(p3, p4, p7, p8);
 	if (analyzerightangle(lineA,lineD,lineE) && analyzerightangle(lineA, lineB, lineF) && analyzerightangle(lineC, lineD, lineF) && analyzerightangle(lineB, lineC, lineE))
 	{
 		range = calculaterange(lineA, lineB);
@@ -79,24 +79,31 @@ void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, 
 		
 bool analyzerightangle(double line1, double line2, double line3)
 {
-	double s1 = line1 * line1;
-	double s2 = line2 * line2;
-	double s3 = line3 * line3;
-	if (s1 == 0 && s2 == 0 && s3 == 0)
+	float a = line1 * line1;
+	float b = line2 * line2;
+	float c = line3 * line3;
+	/*
+	int a = s1;
+	int b = s2;
+	int c = s3;
+	*/
+	if (a == 0 && b == 0 && c == 0)
 	{
 		return false;
-
 	}
-	if ((s1 + s2 == s3) || (s1 + s3 == s2) || (s2 + s3 == s1))
+	if ((a + b == c)|| (a + c == b) || (b + c == a))
 	{
 		return true;
 	}
+	else
+	{
 		return false;
+	}
 	
 }
 
 
-double calculatelength(int x1, int x2, int y1, int y2)
+double calculatelength(int x1, int y1, int x2, int y2)
 {
 	double length;
 	length = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
