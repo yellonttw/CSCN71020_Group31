@@ -63,7 +63,7 @@ void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, 
 	{
 		range = calculaterange(lineA, lineB);
 		circumference = calculatecircumference(lineA, lineB, lineC, lineD);
-		printf("It is a triangle.\n");
+		printf("It is a rectangle.\n");
 		printf("Range = %f\n", range);
 		printf("Circumference = %f\n", circumference);
 
@@ -71,7 +71,7 @@ void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, 
 	else
 	{
 		circumference = calculatecircumference(lineA, lineB, lineC, lineD);
-		printf("It is not a triangle.\n");
+		printf("It is not a rectangle.\n");
 		printf("Circumference = %f\n", circumference);
 
 	}
