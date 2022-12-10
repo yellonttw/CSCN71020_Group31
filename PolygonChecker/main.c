@@ -34,6 +34,15 @@ int main() {
 		case 0:
 			continueProgram = false;
 			break;
+
+		case 2:
+			printf_s("Recentangle selected.\n");
+			int point1[8] = { 0,0,0,0,0,0,0,0 };
+			double range;
+			double circumference;
+			int* coordinates = getpoints(point1);
+			analyzeRecentangle(coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4], coordinates[5], coordinates[6], coordinates[7]);
+			break;
 		default:
 			printf_s("Invalid value entered.\n");
 			break;
@@ -52,6 +61,7 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
@@ -70,3 +80,13 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+
+int* getpoints(int* points) {
+	printf_s("Enter the 4 point Coordinates in order: ");
+	for (int i = 0; i < 8; i++)
+	{
+		scanf_s("%d", &points[i]);
+	}
+	return points;
+}
+

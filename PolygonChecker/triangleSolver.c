@@ -47,3 +47,70 @@ bool vaild_triangle(int side1, int side2, int side3)
 	}
 	return true;
 }
+
+void analyzeRecentangle(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8)
+{
+	char* result = "";
+	double lineA, lineB, lineC, lineD, lineE, lineF;
+	double range, circumference;
+	lineA = calculatelength(p1, p2, p3, p4);
+	lineB = calculatelength(p3, p4, p7, p8);
+	lineC = calculatelength(p7, p8, p5, p6);
+	lineD = calculatelength(p5, p6, p1, p2);
+	lineE = calculatelength(p5, p6, p3, p4);
+	lineF = calculatelength(p1, p2, p7, p8);
+	if (analyzerightangle(lineA,lineD,lineE) && analyzerightangle(lineA, lineB, lineF) && analyzerightangle(lineC, lineD, lineF) && analyzerightangle(lineB, lineC, lineE))
+	{
+		range = calculaterange(lineA, lineB);
+		circumference = calculatecircumference(lineA, lineB, lineC, lineD);
+		printf("It is a triangle.\n");
+		printf("Range = %f\n", range);
+		printf("Circumference = %f\n", circumference);
+
+	}
+	else
+	{
+		circumference = calculatecircumference(lineA, lineB, lineC, lineD);
+		printf("It is not a triangle.\n");
+		printf("Circumference = %f\n", circumference);
+
+	}
+}
+		
+bool analyzerightangle(double line1, double line2, double line3)
+{
+	double s1 = line1 * line1;
+	double s2 = line2 * line2;
+	double s3 = line3 * line3;
+	if (s1 == 0 && s2 == 0 && s3 == 0)
+	{
+		return false;
+
+	}
+	if ((s1 + s2 == s3) || (s1 + s3 == s2) || (s2 + s3 == s1))
+	{
+		return true;
+	}
+		return false;
+	
+}
+
+
+double calculatelength(int x1, int x2, int y1, int y2)
+{
+	double length;
+	length = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+	return length;
+}
+
+double calculatecircumference(double a, double b, double c, double d)
+{
+	double cir = a + b + c + d;
+	return cir;
+}
+
+double calculaterange(double a, double b)
+{
+	double ran = a * b;
+	return ran;
+}
